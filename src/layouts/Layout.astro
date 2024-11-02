@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const fontUrl = '/assets/trajan_pro.ttf'; 
 ---
 
 <!doctype html>
@@ -20,3 +21,10 @@ const { title } = Astro.props;
 		<slot />
 	</body>
 </html>
+
+<style is:global>
+    body {
+        font-family: 'MiFuente';
+        src: url('${fontUrl}') format('truetype'); 
+    }
+</style>

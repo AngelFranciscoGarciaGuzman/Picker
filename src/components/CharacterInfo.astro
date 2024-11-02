@@ -1,0 +1,16 @@
+---
+interface Props{
+    characterName:string
+    characterDescription:string
+}
+const{characterDescription, characterName} = Astro.props;
+---
+
+<div class="absolute">
+    <h3 class="text-3xl text-white text-left">
+        {characterName}
+    </h3>
+    <p class="text-white text-pretty text-left">
+        {characterDescription}
+    </p>
+</div>

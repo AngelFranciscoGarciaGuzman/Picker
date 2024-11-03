@@ -5,7 +5,7 @@ export const characterData = [
     },
     {
         "name": "Hornet",
-        "description": ""
+        "description": "Hornet  is the mysterious self-proclaimed “princess protector” and “guardian” of Hallownest's ruins. Her first appearance was in Hollow Knight, in which she stood as a cold and cruel, ill-tempered foe to The Knight, and is an anti-hero. Hornet is an arachnid warrior equipped with acrobatic skills and is an expert with wielding her weapon of choice, The Needle and Thread."
     },
     {
         "name": "Quirrel",

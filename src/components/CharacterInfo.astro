@@ -2,11 +2,13 @@
 interface Props{
     characterName:string
     characterDescription:string
+    id?:string
 }
-const{characterDescription, characterName} = Astro.props;
+const{characterDescription, characterName, id} = Astro.props;
 ---
 
-<div class="absolute left-[80px] top-[80px]">
+<div class="absolute left-[80px] top-[80px]"
+    id={id}>
     <h3 style="font-size: 8rem; margin-bottom: 5rem;" class="text-3xl text-white text-left w-[220]">{characterName}</h3>
     <p class="mt-[30px] text-white text-pretty text-left w-[460px] leading-8 text-1xl">{characterDescription}</p>
 </div>

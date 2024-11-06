@@ -18,12 +18,14 @@ import { characterData } from '../constants/charactersData';
 			<section class = "flex justify-center relative">
 				<div>
 					<CharacterInfo
+						id="mainCharacterInfo"
 						characterName='The Knight'
 						characterDescription='The Knight is a Vessel, a mystical insectoid being created by the higher beings The Pale King and The White Lady. They are made of Void and were born in The Abyss, a limbo-like place deep beneath Hallownest.'
 						/>
 				</div>
 				<Character 
-					characterImg={selectCharacter("the_knight")}
+					id="mainCharacter"
+					characterImg={selectCharacter("the knight")}
 					characterName='The Knight'/>
 			</section>
 			<section>

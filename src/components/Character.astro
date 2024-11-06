@@ -2,13 +2,16 @@
 interface Props{
     characterImg:string
     characterName:string
+    id?:string
 }
-const {characterImg, characterName} = Astro.props;
+const {characterImg, characterName, id} = Astro.props;
 ---
 
-<div class="w-1/2">
-    <img 
-    class="w-full"
-    src={characterImg} 
-    alt={characterName}>
+<div 
+    id = {id}
+    class="w-1/2">
+        <img 
+        class="w-full"
+        src={characterImg} 
+        alt={characterName}>
 </div>

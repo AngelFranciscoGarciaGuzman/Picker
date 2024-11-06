@@ -3,8 +3,9 @@ import Character from './Character.astro';
 import selectCharacter from '../utils/selectCharacters';
 
 interface Character{
-    name:string
-    description:string
+    name:string,
+    description:string,
+    id:number
 }
 
 interface Props{
@@ -14,18 +15,54 @@ interface Props{
 const {characters} = Astro.props;
 ---
 
+<script>
+import {$$, $} from "../utils/domUtils";
+import { characterData } from "../constants/charactersData";
+import selectCharacter from "../utils/selectCharacters";
+
+    document.addEventListener("DOMContentLoaded", () =>{
+        const handleSelectCharacter = () =>{
+            const allCharacters = $$("[data-character]")
+            allCharacters.forEach(el => {
+                el.addEventListener("click", ()=>{
+                    const selectCharacterId = el.getAttribute("data-character")
+                        if(!selectCharacterId){
+                            throw new Error("Elemento no encontrado")
+                        }
+                        const imgMainCharacter =  $("#mainCharacter")?.querySelector("img");
+                        
+                        const nameMainCharacter = $("#mainCharacterInfo")?.querySelector("h3")
+                        const descriptionMainCharacter = $("#mainCharacterInfo")?.querySelector("p")
+                        
+                        
+                        
+                        if(!imgMainCharacter || !nameMainCharacter || !descriptionMainCharacter) return;
+                        const findCharacter = characterData.find(character => character.id == Number(selectCharacterId))
+
+                        if(!findCharacter) return;
+                        imgMainCharacter.src = selectCharacter(findCharacter.name.toLocaleLowerCase())
+                        nameMainCharacter.textContent = findCharacter.name;
+                        descriptionMainCharacter.textContent = findCharacter.description;
+
+                })
+            })
+        }
+        handleSelectCharacter()
+    });
+</script>
+
 <div>
-    <div
-    class="flex gap-8 w-full justify-end pe-4">
+    <div class="flex gap-8 w-full justify-end pe-4">
             {
-                characters.slice(0, 3).map(({name})=>(
+                characters.slice(0, 3).map(({name, id})=>(
                 <div 
+                    data-character = {id}
                     style="background-image: url(/img/hk_background.jpeg);"
                     class="relative w-[200px] rounded bg-cover bg-center flex justify-center item-center">
                         <Character 
                             characterImg={selectCharacter(name.toLocaleLowerCase())}
                             characterName={name}/>
-                        <p class="absolute bottom-0 text-white">{name}</p>
+                        <p class="absolute bottom-0 text-white left-[4px]">{name}</p>
                 </div>
                 ))
             }

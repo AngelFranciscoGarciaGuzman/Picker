@@ -1,4 +1,7 @@
 ---
+import Character from './Character.astro';
+import selectCharacter from '../utils/selectCharacters';
+
 interface Character{
     name:string
     description:string
@@ -12,5 +15,19 @@ const {characters} = Astro.props;
 ---
 
 <div>
-    <div style="background-image: url(/img/hk_background.jpeg);"></div>
+    <div
+    class="flex gap-8 w-full justify-end pe-4">
+            {
+                characters.slice(0, 3).map(({name})=>(
+                <div 
+                    style="background-image: url(/img/hk_background.jpeg);"
+                    class="relative w-[200px] rounded bg-cover bg-center flex justify-center item-center">
+                        <Character 
+                            characterImg={selectCharacter(name.toLocaleLowerCase())}
+                            characterName={name}/>
+                        <p class="absolute bottom-0 text-white">{name}</p>
+                </div>
+                ))
+            }
+    </div>
 </div>
